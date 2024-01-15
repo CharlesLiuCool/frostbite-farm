@@ -22,6 +22,7 @@ height = 210.006
 
 [node name="Shopkeeper" type="Node2D"]
 script = ExtResource("1_hif6c")
+spawn_pos = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -57,7 +58,6 @@ visible = false
 texture = ExtResource("3_odond")
 
 [node name="ShopUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="ShopUI"]
 anchors_preset = 8
@@ -101,14 +101,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -94.0
 offset_top = -151.0
-offset_right = 182.0
-offset_bottom = 151.0
+offset_right = 193.0
+offset_bottom = 447.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
 [node name="Container" type="Control" parent="ShopUI/ScrollContainer"]
-custom_minimum_size = Vector2(0, 500)
+custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -370,6 +370,70 @@ offset_left = 3.0
 offset_top = 406.0
 offset_right = 259.0
 offset_bottom = 486.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tavtk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tavtk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tavtk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tavtk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tavtk")
+flat = true
+
+[node name="IncreaseHeatRadius" type="Control" parent="ShopUI/ScrollContainer/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="Sprite2D" parent="ShopUI/ScrollContainer/Container/IncreaseHeatRadius"]
+position = Vector2(131.25, 446)
+scale = Vector2(2.76562, 2.76562)
+texture = ExtResource("6_sv6bg")
+offset = Vector2(0, 35)
+
+[node name="Icon" type="Sprite2D" parent="ShopUI/ScrollContainer/Container/IncreaseHeatRadius"]
+position = Vector2(131.25, 444)
+scale = Vector2(2.76562, 2.76562)
+texture = ExtResource("8_6ohrf")
+offset = Vector2(-32, 36)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ShopUI/ScrollContainer/Container/IncreaseHeatRadius"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 557.0
+offset_right = 250.0
+offset_bottom = 575.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_6jecp")
+text = "100 coins"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ShopUI/ScrollContainer/Container/IncreaseHeatRadius"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 518.0
+offset_right = 267.0
+offset_bottom = 561.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_6jecp")
+text = "Increase"
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="ShopUI/ScrollContainer/Container/IncreaseHeatRadius"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 535.0
+offset_right = 265.0
+offset_bottom = 557.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_6jecp")
+text = "Lamp Radius"
+scroll_active = false
+
+[node name="Button" type="Button" parent="ShopUI/ScrollContainer/Container/IncreaseHeatRadius"]
+layout_mode = 0
+offset_top = 502.0
+offset_right = 256.0
+offset_bottom = 582.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tavtk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_tavtk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_tavtk")

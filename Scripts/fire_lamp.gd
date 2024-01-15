@@ -1,6 +1,5 @@
 extends "item.gd"
 
-@export var warmth_radius: float = 50
 @export var warmth_colour: Color = "#D9D7A1"
 @export var pulse_rate: float = 0.005
 @export var lifetime: int = 12
@@ -32,7 +31,7 @@ func _draw() -> void:
 
 	var colour = warmth_colour
 	colour.a = (sin(Time.get_ticks_msec() * pulse_rate) + 1) / 4 + 0.25
-	draw_circle_arc(Vector2.ZERO, warmth_radius, 0, 360, colour)
+	draw_circle_arc(Vector2.ZERO, GameManager.lamp_radius, 0, 360, colour)
 
 func _custom_process(_delta: float) -> void:
 	queue_redraw()

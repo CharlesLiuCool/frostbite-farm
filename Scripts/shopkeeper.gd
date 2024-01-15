@@ -107,3 +107,9 @@ func _on_lamp_button_pressed():
 	var item: Node2D = fire_lamp.instantiate()
 	get_tree().root.add_child(item)
 	item.position = spawn_pos
+
+func _on_lamp_button_pressed():
+	if GameManager.balance < 100:
+		return
+	GameManager.balance -= 100
+	GameManager.update_lamp_radius.emit()
