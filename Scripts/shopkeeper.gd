@@ -108,8 +108,13 @@ func _on_lamp_button_pressed():
 	get_tree().root.add_child(item)
 	item.position = spawn_pos
 
-func _on_lamp_button_pressed():
+func _on_lamp_increase_button_pressed():
 	if GameManager.balance < 100:
 		return
 	GameManager.balance -= 100
+	GameManager.update_balance.emit()
+	GameManager.lamp_radius = 70
 	GameManager.update_lamp_radius.emit()
+	GameManager.light_scale = 7;
+	GameManager.update_light_scale.emit()
+

@@ -22,7 +22,6 @@ height = 210.006
 
 [node name="Shopkeeper" type="Node2D"]
 script = ExtResource("1_hif6c")
-spawn_pos = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -101,8 +100,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -94.0
 offset_top = -151.0
-offset_right = 193.0
-offset_bottom = 447.0
+offset_right = 189.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -443,3 +442,4 @@ flat = true
 
 [connection signal="body_entered" from="Interaction Radius" to="." method="_on_interaction_radius_body_entered"]
 [connection signal="body_exited" from="Interaction Radius" to="." method="_on_interaction_radius_body_exited"]
+[connection signal="pressed" from="ShopUI/ScrollContainer/Container/IncreaseHeatRadius/Button" to="." method="_on_lamp_increase_button_pressed"]

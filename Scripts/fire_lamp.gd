@@ -36,7 +36,7 @@ func _draw() -> void:
 func _custom_process(_delta: float) -> void:
 	queue_redraw()
 
-	light.energy = (sin(Time.get_ticks_msec() * pulse_rate) + 1) / 4 + 0.5 if lifetime_countdown > 0 else 0.0
+	light.energy = ((sin(Time.get_ticks_msec() * pulse_rate) + 1) / 4 * (GameManager.light_scale) + 0.5) if lifetime_countdown > 0 else 0.0
 
 	if touching_player && Input.is_action_just_released("interact"):
 		bar.value = 100
