@@ -1,45 +1,67 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjcy26ps73tl"]
+[gd_scene load_steps=8 format=3 uid="uid://bjcy26ps73tl"]
 
-[ext_resource type="Texture2D" uid="uid://dr3yustp1r081" path="res://Assets/shop/shop.png" id="1_grvm1"]
-[ext_resource type="Texture2D" uid="uid://8rs6qjlyqcpr" path="res://Assets/shop/shop_light.png" id="2_264iw"]
+[ext_resource type="Texture2D" uid="uid://dccdin70ciiin" path="res://Assets/shop/shop_2.png" id="1_fk311"]
+[ext_resource type="Script" path="res://Scripts/shop.gd" id="1_qnfu0"]
+[ext_resource type="Texture2D" uid="uid://ceelrkk5bltem" path="res://Assets/shop/shop_2_interior.png" id="2_wcv03"]
 [ext_resource type="Texture2D" uid="uid://cxlkfqcaggceq" path="res://Assets/house_light.png" id="3_1ds6a"]
 [ext_resource type="PackedScene" uid="uid://dos7awdnrsffg" path="res://Scenes/shopkeeper.tscn" id="4_yidm4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uua0u"]
-size = Vector2(62, 63)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uroxm"]
+radius = 23.008
+height = 88.0144
 
-[node name="Shop" type="StaticBody2D"]
-collision_layer = 5
-collision_mask = 5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aiq5s"]
+size = Vector2(29, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_uua0u")
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_qnfu0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("1_grvm1")
+[node name="Collision" type="StaticBody2D" parent="."]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.992157, 0.882353, 0.772549, 1)
-energy = 1.13
-texture = ExtResource("2_264iw")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
+build_mode = 1
+polygon = PackedVector2Array(-20, 38, -20, 27, -34, 23, -43, 17, -48, 11, -48, -2, -45, -13, -41, -21, -33, -29, -20, -38, -10, -41, 10, -41, 22, -37, 32, -30, 41, -22, 47, -6, 48, -2, 48, 11, 43, 17, 36, 22, 29, 25.36, 25, 26, 20, 26.4, 20, 38, 10, 38, 10, 25, 20, 25, 25, 25, 29, 24, 32, 22, 35, 19, 37, 14, 38, 9, 38, 4, 34, -2, 27, -8, 19, -12, 6, -15, -7, -15, -21, -12, -31, -5, -35, 1, -37, 7, -38, 12, -37, 16, -33, 21, -20, 25, -10, 26, -10, 38)
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(-16, -8)
+[node name="ShopInterior" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+texture = ExtResource("2_wcv03")
+
+[node name="PointLight2D2" type="PointLight2D" parent="ShopInterior"]
+position = Vector2(-21.5, -21.7789)
 scale = Vector2(0.898438, 1.44141)
 color = Color(0.901961, 0.921569, 0.839216, 1)
 energy = 1.5
 texture = ExtResource("3_1ds6a")
 
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-position = Vector2(17, -5)
+[node name="PointLight2D3" type="PointLight2D" parent="ShopInterior"]
+position = Vector2(11.5, -18.7789)
 scale = Vector2(0.938477, 1.98783)
 color = Color(0.901961, 0.921569, 0.839216, 1)
 energy = 1.5
 texture = ExtResource("3_1ds6a")
 
-[node name="Shopkeeper" parent="." instance=ExtResource("4_yidm4")]
-position = Vector2(-17, 11)
+[node name="Shopkeeper" parent="ShopInterior" instance=ExtResource("4_yidm4")]
+position = Vector2(-22.5, -2.77887)
 scale = Vector2(0.615, 0.615)
 spawn_pos = Vector2(240, -16)
+
+[node name="ShopExterior" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("1_fk311")
+
+[node name="ShopEntrance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopEntrance"]
+position = Vector2(1, 3)
+rotation = -1.56185
+shape = SubResource("CapsuleShape2D_uroxm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ShopEntrance"]
+position = Vector2(1, 29)
+shape = SubResource("RectangleShape2D_aiq5s")
+
+[connection signal="body_entered" from="ShopEntrance" to="." method="_on_shop_entrance_body_entered"]
+[connection signal="body_exited" from="ShopEntrance" to="." method="_on_shop_entrance_body_exited"]
