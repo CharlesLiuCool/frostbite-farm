@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://d4cdtnqi14hd6" path="res://Assets/plant_cabbage/cabbage_seeds.png" id="10_agv8q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yhman"]
-radius = 41.0033
-height = 108.006
+radius = 105.003
+height = 210.006
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2dgi"]
 
@@ -28,9 +28,10 @@ texture_filter = 1
 texture = ExtResource("2_gg7w5")
 
 [node name="Interaction Radius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction Radius"]
-position = Vector2(32, 4)
+position = Vector2(40, 1)
 rotation = -1.57431
 shape = SubResource("CapsuleShape2D_yhman")
 
