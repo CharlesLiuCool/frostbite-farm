@@ -245,7 +245,6 @@ position = Vector2(191, -39)
 position = Vector2(-48, -80)
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Balance" parent="UI" instance=ExtResource("9_qq8l1")]
 
