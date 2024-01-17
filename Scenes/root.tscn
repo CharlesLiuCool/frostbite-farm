@@ -171,7 +171,7 @@ sources/3 = SubResource("TileSetAtlasSource_u4614")
 offsets = PackedFloat32Array(0.0327869, 0.221311, 0.860656, 1)
 colors = PackedColorArray(0.384314, 0.619608, 0.619608, 0, 0.384314, 0.619608, 0.619608, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_qcac3"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u2fhy"]
 gradient = SubResource("Gradient_5luv2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4w2t"]
@@ -187,7 +187,7 @@ initial_velocity_max = 101.13
 gravity = Vector3(0, 25, 0)
 scale_min = 0.5
 scale_max = 1.5
-color_ramp = SubResource("GradientTexture1D_qcac3")
+color_ramp = SubResource("GradientTexture1D_u2fhy")
 turbulence_noise_strength = 0.0
 turbulence_noise_scale = 3.264
 turbulence_noise_speed_random = 1.17

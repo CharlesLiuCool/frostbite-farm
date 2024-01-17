@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqy4i6jeoprjd"]
+[gd_scene load_steps=20 format=3 uid="uid://cqy4i6jeoprjd"]
 
 [ext_resource type="Texture2D" uid="uid://bive3nvqhu8pj" path="res://Assets/snow_tileset.png" id="1_g5aip"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_idgv4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8cs4ytadxqvi" path="res://Assets/tree 2.png" id="3_4qa3c"]
 [ext_resource type="Texture2D" uid="uid://y8ht1dknigwf" path="res://Assets/cliff_tileset.png" id="4_qpe7u"]
 [ext_resource type="Texture2D" uid="uid://dg52sat2ptkfo" path="res://Assets/menu_title.png" id="5_8duyv"]
+[ext_resource type="Texture2D" uid="uid://c6qs1ykxst8mm" path="res://Assets/snowflake_3.png" id="6_2h3ei"]
 [ext_resource type="Texture2D" uid="uid://bq1f1ft4g218t" path="res://Assets/play_button.png" id="7_giauo"]
 [ext_resource type="Texture2D" uid="uid://cauojeiurkxr8" path="res://Assets/exit_button.png" id="8_sxcu5"]
 
@@ -65,6 +66,33 @@ sources/1 = SubResource("TileSetAtlasSource_eb7dd")
 sources/2 = SubResource("TileSetAtlasSource_gyoxo")
 sources/3 = SubResource("TileSetAtlasSource_m6m35")
 
+[sub_resource type="Gradient" id="Gradient_uifya"]
+offsets = PackedFloat32Array(0.0327869, 0.221311, 0.860656, 1)
+colors = PackedColorArray(0.384314, 0.619608, 0.619608, 0, 0.384314, 0.619608, 0.619608, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qcac3"]
+gradient = SubResource("Gradient_uifya")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_643wf"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 400, 1)
+angle_min = -315.5
+angle_max = 40.4
+direction = Vector3(30.975, -1.455, 0)
+spread = 0.0
+initial_velocity_min = 11.24
+initial_velocity_max = 101.13
+gravity = Vector3(0, 25, 0)
+scale_min = 0.5
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_qcac3")
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 3.264
+turbulence_noise_speed_random = 1.17
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.131
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uloc0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knqnn"]
@@ -83,7 +111,14 @@ layer_1/tile_data = PackedInt32Array(720921, 262147, 2, 851977, 2, 0, 917513, 2,
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 322)
 scale = Vector2(0.828915, 0.750286)
-zoom = Vector2(1.62, 1.62)
+zoom = Vector2(3, 3)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
+position = Vector2(1, -135)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_643wf")
+texture = ExtResource("6_2h3ei")
+lifetime = 6.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(568, 284)
