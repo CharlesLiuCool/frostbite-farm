@@ -10,6 +10,7 @@ extends Area2D
 @onready var frozen_timer: Timer = $FrozenTimer
 @onready var warning_scene: PackedScene = preload("res://Scenes/warning.tscn")
 @onready var arrow_scene: PackedScene = preload("res://Scenes/arrow.tscn")
+@onready var water_drop_scene: PackedScene = preload("res://Scenes/water_drop.tscn")
 @onready var frozen_countdown: int = frozen_speed
 
 const MY_DIALOGUE: String = "Click to water"
@@ -19,18 +20,26 @@ var is_growing: bool = false
 var touching_player: bool = false
 var touching_lamp: bool = false
 var arrow: Node2D = null
+var water_drop: Node2D = null
 
 func _ready() -> void:
 	growth_timer.wait_time = growth_speed / stages.size()
 	growth_timer.timeout.connect(_on_growth_timer)
 	frozen_timer.timeout.connect(_on_frozen_timer)
-
+	
+	water_drop = water_drop_scene.instantiate()
+	water_drop.position.y = -10
+	add_child(water_drop)
+	
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 
 func _process(_delta: float) -> void:
+		
 	if Input.is_action_just_released("interact") && touching_player && GameManager.holding == "watering_can":
 		is_growing = true
+		if water_drop != null:
+			water_drop.queue_free()
 		growth_timer.start()
 		frozen_timer.start()
 

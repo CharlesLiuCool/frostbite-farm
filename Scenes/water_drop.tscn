@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cioqxpegmrc8r"]
+
+[ext_resource type="Texture2D" uid="uid://dglip408gulgf" path="res://Assets/water_drop.png" id="1_sxvv4"]
+[ext_resource type="Script" path="res://Scripts/info.gd" id="2_iit2x"]
+
+[node name="WaterDrop" type="Sprite2D"]
+z_index = 20
+position = Vector2(11, 0)
+texture = ExtResource("1_sxvv4")
+script = ExtResource("2_iit2x")
